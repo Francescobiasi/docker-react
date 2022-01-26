@@ -1,21 +1,8 @@
 version: '3'
 services:
   web:
-    build: #per specificare il file docker
-      context: . #contesto ovvero dove mi trovo
-      dockerfile: Dockerfile.dev #nome del file docker
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000" #porta locale => container
-    volumes: 
-      - /app/node_modules #indica che non bisogna fare la referenza ai node modules perchè in questa macchina non ce l abbiamo
-      - .:/app # indica che il nostro sorgente all interno del container avrà una referenza diretta con il codice presente sulla mia macchina, in questo modo possiamo ricaricare in tempo reale
-
-#creiamo un nuovo servizio per poter aggiornare i test
-  tests:
-      build: #per specificare il file docker
-        context: . #contesto ovvero dove mi trovo
-        dockerfile: Dockerfile.dev #nome del file docker
-      volumes: 
-        - /app/node_modules #indica che non bisogna fare la referenza ai node modules perchè in questa macchina non ce l abbiamo
-        - .:/app # indica che il nostro sorgente all interno del container avrà una referenza diretta con il codice presente sulla mia macchina, in questo modo possiamo ricaricare in tempo reale
-      command: ["npm", "run", "test"]  #override del comando di avvio
+      - '80:80'

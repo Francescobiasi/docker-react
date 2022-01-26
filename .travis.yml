@@ -14,3 +14,18 @@ before_install:
 script:
 # -- --coverage indica che l esecuzione deve terminare una volta eseguito questo script
   - docker run -e CI=true francescobiasi/docker-react npm run test -- --coverage
+
+#utile per collegare ad aws per il deploy
+deploy:
+#1) veloce 
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-501214158646"
+  bucket_path: "docker-react"
+  on:
+    # specifichiamo chei l deploy deve essere fatto solo quando c'è una pr sul branch master
+    branc: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY

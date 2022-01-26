@@ -1,7 +1,7 @@
 #file docker per generare l'immagine in ambiente produzione
 #1)abbiamo bisogno di due fasi, la prima che scarichi le dipendenze e langi il comando npm build che permette di generare i file minimi per il funzionamento dell applicazione
 #2)dobbiamo eseguire nginx dando in pasto il contenuto generato dallo step 1
-FROM node:16-alpine as builder
+FROM node:14-alpine as builder
 WORKDIR '/app'
 COPY package.json .
 RUN npm install
