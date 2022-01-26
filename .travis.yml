@@ -3,7 +3,7 @@
 # dobbiamo avere permessi speciali
 sudo: required
 #specifichiamo che vogliamo avere docker istallato
-services:n
+services:
   - docker
 #comandi prima di avviare il comando principale
 # -t definiamo il nome che poi useremo per l immagine
