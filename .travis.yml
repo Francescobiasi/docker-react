@@ -1,0 +1,16 @@
+#configurazione per trevis
+
+# dobbiamo avere permessi speciali
+sudo: required
+#specifichiamo che vogliamo avere docker istallato
+services:n
+  - docker
+#comandi prima di avviare il comando principale
+# -t definiamo il nome che poi useremo per l immagine
+before_install:
+  - docker build -t francescobiasi/docker-react -f Dockerfile.dev .
+
+# comandi da utilzzare per runnare i nostri test, ogni comando restituisce uno status code, che indica se è fallito o meno
+script:
+# -- --coverage indica che l esecuzione deve terminare una volta eseguito questo script
+  - docker run francescobiasi/docker-react npm run test -- --coverage
