@@ -13,4 +13,4 @@ before_install:
 # comandi da utilzzare per runnare i nostri test, ogni comando restituisce uno status code, che indica se è fallito o meno
 script:
 # -- --coverage indica che l esecuzione deve terminare una volta eseguito questo script
-  - docker run francescobiasi/docker-react npm run test -- --coverage
+  - docker run -e CI=true francescobiasi/docker-react npm run test -- --coverage
